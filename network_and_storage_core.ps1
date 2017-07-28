@@ -59,3 +59,4 @@ Enable-PSRemoting
 $d = (get-disk | ?{$_.OperationalStatus -eq "Offline"}).Number
 Set-Disk $d -IsOffline $false
 get-disk
+get-disk | ?{$_.PartitionStyle -eq "RAW" -and $_.OperationalStatus -eq "Online"} | Initialize-Disk | New-Partition -UseMaximumSize | Format-Volume -FileSystem NTFS -Confirm:$false
