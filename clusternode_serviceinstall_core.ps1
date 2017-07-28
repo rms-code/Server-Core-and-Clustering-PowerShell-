@@ -14,7 +14,6 @@ Param(
 )
 New-NetIPAddress -InterfaceAlias "SAN1" -IPAddress $SAN1 -PrefixLength 24
 New-NetIPAddress -InterfaceAlias "SAN2" -IPAddress $SAN2 -PrefixLength 24
-Enable-PSRemoting
 Set-SmbServerConfiguration -EnableSMB1Protocol $false -Force
 Remove-WindowsFeature FS-SMB1
 Install-WindowsFeature Hyper-V, RSAT-Clustering-Powershell, Hyper-V-PowerShell, Multipath-IO -IncludeManagementTools
