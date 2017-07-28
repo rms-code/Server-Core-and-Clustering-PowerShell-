@@ -53,8 +53,8 @@ Get-IscsiSession
 Register-IscsiSession
 Enable-MSDSMAutomaticClaim -BusType iSCSI
 Set-MPIOSetting -NewDiskTimeout 60
+New-VMSwitch -Name GuestVMS -NetAdapterName GuestTeam
+Import-Module FailoverClusters
 $d = (get-disk | ?{$_.OperationalStatus -eq "Offline"}).Number
 Set-Disk $d -IsOffline $false
 get-disk
-New-VMSwitch -Name GuestVMS -NetAdapterName GuestTeam
-Import-Module FailoverClusters
