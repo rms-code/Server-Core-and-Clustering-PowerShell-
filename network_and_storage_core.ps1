@@ -18,35 +18,33 @@ Param(
                 Mandatory=$true,
                 HelpMessage='SAN GROUP IP')]
                
-                [int]$SANGROUPIP,
+                [ipaddress]$SANGROUPIP,
 [parameter(
                 Mandatory=$true,
                 HelpMessage='Host Team IP')]
                
-                [int]$HostIP,
+                [ipaddress]$HostIP,
 [parameter(
                 Mandatory=$true,
                 HelpMessage='Default GW')]
                
-                [int]$DefaultGW,
+                [ipaddress]$DefaultGW,
 [parameter(
                 Mandatory=$true,
                 HelpMessage='DNS SERVER')]
                
-                [int]$DNSSRV
+                [ipaddress]$DNSSRV,
 [parameter(
                 Mandatory=$true,
                 HelpMessage='SAN1 IP')]
                
-                [int]$SAN1
+                [ipaddress]$SAN1,
 [parameter(
                 Mandatory=$true,
                 HelpMessage='SAN2 IP')]
                
-                [int]$SAN2
+                [ipaddress]$SAN2
 )
-New-NetIPAddress -InterfaceAlias "SAN1" -IPAddress $SAN1 -PrefixLength 24
-New-NetIPAddress -InterfaceAlias "SAN2" -IPAddress $SAN2 -PrefixLength 24
 Disable-NetAdapterBinding -InterfaceAlias SAN1 -ComponentID ms_tcpip6
 Disable-NetAdapterBinding -InterfaceAlias SAN2 -ComponentID ms_tcpip6
 New-NetLbfoTeam -Name HostTeam -TeamMembers host1,host2 -confirm
